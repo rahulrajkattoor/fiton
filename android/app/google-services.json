@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "238774264804",
+    "project_id": "fiton-ae242",
+    "storage_bucket": "fiton-ae242.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238774264804:android:19f212745acebeb57addf1",
+        "android_client_info": {
+          "package_name": "com.example.fiton"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYyKH3TZojU5jaenhhPNKHdUMDkTy8Y0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
