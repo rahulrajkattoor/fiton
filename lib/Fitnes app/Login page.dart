@@ -1,11 +1,14 @@
-import 'dart:ui';
 
 
 
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fiton/Fitnes%20app/registration.dart';
 import 'package:fiton/Fitnes%20app/service/firebase%20helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'fitnes home page.dart';
 
@@ -20,8 +23,20 @@ class loginpage extends StatefulWidget {
 class _loginpageState extends State<loginpage> {
   GlobalKey<FormState> key = GlobalKey();
   bool showpass = true;
-  final TextEditingController email_controler=TextEditingController();
-  final TextEditingController pass_controler=TextEditingController();
+
+
+  TextEditingController _emailcontroller=TextEditingController();
+  TextEditingController _passwordcontroller=TextEditingController();
+
+  @override
+  void dispose() {
+
+    _emailcontroller.dispose();
+    _passwordcontroller.dispose();
+    super.dispose();
+  }
+
+
 
 
 
@@ -48,7 +63,7 @@ class _loginpageState extends State<loginpage> {
                           )),
                       Padding(
                         padding: EdgeInsets.only(left: 60, right: 60, top: 60),
-                        child: TextFormField(controller: email_controler,
+                        child: TextFormField(controller: _emailcontroller,
                           style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               suffixIcon: Icon(
@@ -76,27 +91,13 @@ class _loginpageState extends State<loginpage> {
                       Padding(
                         padding: const EdgeInsets.only(
                             right: 60, left: 60, bottom: 20, top: 40),
-                        child: TextFormField(controller: pass_controler,
+                        child: TextFormField(controller: _passwordcontroller,
                           style: TextStyle(color: Colors.white),
                           obscureText: showpass,
                           obscuringCharacter: "*",
                           decoration: InputDecoration(
                               iconColor: Colors.white,
-                              suffixIcon: IconButton(
-                                color: Colors.white,
-                                onPressed: () {
-                                  setState(() {
-                                    if (showpass) {
-                                      showpass = false;
-                                    } else {
-                                      showpass = true;
-                                    }
-                                  });
-                                },
-                                icon: Icon(showpass == true
-                                    ? Icons.visibility_off
-                                    : Icons.visibility),
-                              ),
+                              suffixIcon: Icon(Icons.password),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20)),
                               hintText: "password",
@@ -114,21 +115,11 @@ class _loginpageState extends State<loginpage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 100,left: 100,right: 100),
-                        child:ElevatedButton(onPressed: (){
-                         String email=email_controler.text.trim();
-                         String pass=pass_controler.text.trim();
-                         FireBaseHelper()
-                         .loginUser(email:email,pwd:pass)
-                         .then((result){
-                           if(result==null){
-                             Navigator.push(context, MaterialPageRoute(builder: (context)=>fitnesnavigation()));
-                           }else{
-                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result)));
-                           }
-                         });
-
-
-                        },child: Text("Login"),)
+                        child:MaterialButton(
+                          color: Colors.pink,
+                          textColor: Colors.white,
+                          onPressed: Loginuser,
+                        child: Text("Login"),)
                       ),
 
 
@@ -154,5 +145,13 @@ class _loginpageState extends State<loginpage> {
         ),
       ),
     );
+
   }
-}
+
+
+  void Loginuser() {
+    Firebaseauth_method(FirebaseAuth.instance).loginWithEmail(
+        email: _emailcontroller.text,
+        password: _passwordcontroller.text,
+        context: context);
+  }}

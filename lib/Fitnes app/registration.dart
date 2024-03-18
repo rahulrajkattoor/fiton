@@ -1,4 +1,8 @@
 
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:fiton/Fitnes%20app/fitnes%20home%20page.dart';
 import 'package:fiton/Fitnes%20app/service/firebase%20helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,11 +22,42 @@ class start extends StatefulWidget {
 }
 
 class _startState extends State<start> {
-  var username_controller=TextEditingController();
-  var pass_controller=TextEditingController();
-  var email_controller=TextEditingController();
+
+TextEditingController _usernamecontroller=TextEditingController();
+TextEditingController _emailcontroller=TextEditingController();
+TextEditingController _passwordcontroller=TextEditingController();
   GlobalKey<FormState>key = GlobalKey();
   bool showpass = true;
+String? email;
+String? password;
+String? name;
+
+@override
+void dispose() {
+  super.dispose();
+  _emailcontroller.dispose();
+  _passwordcontroller.dispose();
+}
+
+
+
+void signUpUser() async {
+  print("Signing up user...");
+  try {
+    await context.read<Firebaseauth_method>().Signupemail(
+      email: _emailcontroller.text,
+      password: _passwordcontroller.text,
+      name: _usernamecontroller.text,
+      context: context,
+    );
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => loginpage()));
+    print("Sign up successful!");
+  } catch (e) {
+    print("Error during sign up: $e");
+  }
+}
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +86,7 @@ class _startState extends State<start> {
                             ),
                             Padding(padding: EdgeInsets.only(
                                 top: 60, left: 60, right: 60),
-                              child: TextFormField(controller: username_controller,
+                              child: TextFormField(controller: _usernamecontroller,
                                 style: TextStyle(
                                   color: Colors.white),
                                 decoration: InputDecoration(
@@ -68,7 +103,7 @@ class _startState extends State<start> {
 
                             Padding(padding: EdgeInsets.only(
                                 left: 60, right: 60, top: 20),
-                              child: TextFormField(controller: email_controller,
+                              child: TextFormField(controller: _emailcontroller,
                                 style: TextStyle(
                                   color: Colors.white),
                                 decoration: InputDecoration(
@@ -96,26 +131,13 @@ class _startState extends State<start> {
                             Padding(
                                 padding: const EdgeInsets.only(
                                     right: 60, left: 60, top: 10),
-                                child: TextFormField(controller: pass_controller,
+                                child: TextFormField(controller: _passwordcontroller,
                                   style: TextStyle(color: Colors.white),
-                                  obscureText: showpass,
-                                  obscuringCharacter: "*",
+
                                   decoration: InputDecoration(
 
-                                      suffixIcon: IconButton(onPressed: () {
-                                        setState(() {
-                                          if (showpass) {
-                                            showpass = false;
-                                          }
-                                          else {
-                                            showpass = true;
-                                          }
-                                        });
-                                      },
-                                        icon: Icon(showpass == true ? Icons
-                                            .visibility_off : Icons.visibility,
-                                          color: Colors.white,),
-                                      ),
+                                      suffixIcon: Icon(Icons.password),
+
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(
                                             15),),
@@ -139,23 +161,12 @@ class _startState extends State<start> {
                             Padding(
                               padding: const EdgeInsets.only(
                                   left: 100, right: 100, top: 20),
-                              child:ElevatedButton(onPressed: (){
-                                String email=email_controller.text.trim();
-                                String pass=pass_controller.text.trim();
-                                //String name=username_controller.text.trim();
-
-
-                                FireBaseHelper().registerUser(email:email,pwd:pass,).then((result){
-                                  if(result==null){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage()));
-                                  }else{
-                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result)));
-                                  }
-                                });
-
-
-
-                              },child: Text("Register"),)
+                              child:MaterialButton(
+                                color: Colors.pink,
+                                textColor: Colors.white,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                                onPressed: signUpUser,
+                              child: Text("Register"),)
                             ),
 
                             SizedBox(height: 10,),
@@ -183,4 +194,9 @@ class _startState extends State<start> {
         )
     );
   }
+
+
+
+
+
 }

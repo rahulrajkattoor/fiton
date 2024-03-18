@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fiton/Fitnes%20app/Login%20page.dart';
 import 'package:fiton/Fitnes%20app/service/firebase%20helper.dart';
 import 'package:flutter/material.dart';
@@ -173,7 +174,8 @@ class _SettingsState extends State<Settings> {
             // ),
             ListTile(
               onTap: () {
-              //  context.read<Firebaseauth_method>().signOut(context);
+                FirebaseAuth.instance.signOut();
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage()));
               },
               title: Text(
                 'Logout',
@@ -186,7 +188,8 @@ class _SettingsState extends State<Settings> {
             ),
             ListTile(
               onTap: () {
-                FireBaseHelper().logout().then((value)=>Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage())));
+
+                context.read<Firebaseauth_method>().deleteAccount(context);
 
               },
               title: Text(
