@@ -15,6 +15,7 @@ import 'Login page.dart';
 
 
 class start extends StatefulWidget {
+  start({Key?key}):super(key: key);
 
   @override
   State<start> createState() => _startState();
@@ -87,6 +88,9 @@ void signUpUser() async {
                             Padding(padding: EdgeInsets.only(
                                 top: 60, left: 60, right: 60),
                               child: TextFormField(controller: _usernamecontroller,
+                                onSaved: (ename){
+                                name=ename;
+                                },
                                 style: TextStyle(
                                   color: Colors.white),
                                 decoration: InputDecoration(
@@ -104,6 +108,9 @@ void signUpUser() async {
                             Padding(padding: EdgeInsets.only(
                                 left: 60, right: 60, top: 20),
                               child: TextFormField(controller: _emailcontroller,
+                                onSaved: (pwd){
+                                password=pwd;
+                                },
                                 style: TextStyle(
                                   color: Colors.white),
                                 decoration: InputDecoration(
@@ -132,6 +139,8 @@ void signUpUser() async {
                                 padding: const EdgeInsets.only(
                                     right: 60, left: 60, top: 10),
                                 child: TextFormField(controller: _passwordcontroller,
+                                  obscuringCharacter: '*',
+                                  obscureText: showpass,
                                   style: TextStyle(color: Colors.white),
 
                                   decoration: InputDecoration(

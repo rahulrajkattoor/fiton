@@ -30,11 +30,13 @@ class _loginpageState extends State<loginpage> {
 
   @override
   void dispose() {
-
-    _emailcontroller.dispose();
     _passwordcontroller.dispose();
+    _emailcontroller.dispose();
+    super.dispose();
     super.dispose();
   }
+
+
 
 
 
@@ -92,39 +94,37 @@ class _loginpageState extends State<loginpage> {
                         padding: const EdgeInsets.only(
                             right: 60, left: 60, bottom: 20, top: 40),
                         child: TextFormField(controller: _passwordcontroller,
-                          style: TextStyle(color: Colors.white),
+
+                          style: TextStyle(color: Colors.white,),
                           obscureText: showpass,
-                          obscuringCharacter: "*",
+                          obscuringCharacter: '*',
+
                           decoration: InputDecoration(
                               iconColor: Colors.white,
-                              suffixIcon: Icon(Icons.password),
+                              suffixIcon: Icon(Icons.password,color: Colors.white,),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20)),
                               hintText: "password",
                               hintStyle: TextStyle(color: Colors.white),
                               labelText: "password",
                               labelStyle: TextStyle(color: Colors.white)),
-                          validator: (password) {
-                            if (password!.isEmpty || password.length < 6) {
-                              return "enter valid passwod";
-                            } else {
-                              return null;
-                            }
-                          },
+
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 100,left: 100,right: 100),
+                        padding: const EdgeInsets.only(left: 100,right: 100),
                         child:MaterialButton(
                           color: Colors.pink,
                           textColor: Colors.white,
                           onPressed: Loginuser,
+                        shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20)),
                         child: Text("Login"),)
                       ),
 
 
+
                       Padding(
-                        padding: const EdgeInsets.only(left: 80,right: 80,bottom: 100),
+                        padding: const EdgeInsets.only(left: 80,right: 80,bottom: 300),
                         child: TextButton(
                             onPressed: () {
                               Navigator.push(context,

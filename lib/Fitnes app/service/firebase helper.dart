@@ -1,10 +1,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fiton/Fitnes%20app/Login%20page.dart';
 import 'package:fiton/Fitnes%20app/fitnes%20home%20page.dart';
 import 'package:fiton/Fitnes%20app/service/snackbar.dart';
 import 'package:flutter/material.dart';
 
+import '../Login page.dart';
 
 class Firebaseauth_method {
   final FirebaseAuth _auth;

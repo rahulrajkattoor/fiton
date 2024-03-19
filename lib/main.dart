@@ -18,11 +18,11 @@ import 'Fitnes app/splash screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      // options: FirebaseOptions(
-      //     apiKey: "AIzaSyBYyKH3TZojU5jaenhhPNKHdUMDkTy8Y0Y",
-      //     appId:  "1:238774264804:android:19f212745acebeb57addf1",
-      //     messagingSenderId: '',
-      //     projectId: " fiton-ae242")
+      options: FirebaseOptions(
+          apiKey: "AIzaSyBYyKH3TZojU5jaenhhPNKHdUMDkTy8Y0Y",
+          appId:  "1:238774264804:android:19f212745acebeb57addf1",
+          messagingSenderId: '',
+          projectId: " fiton-ae242")
   );
   runApp(
       MultiProvider(providers:[

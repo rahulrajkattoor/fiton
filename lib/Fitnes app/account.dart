@@ -12,6 +12,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
+    final user=context.read<Firebaseauth_method>().user;
 
 
     return Scaffold(
@@ -52,19 +53,19 @@ class _SettingsState extends State<Settings> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Text(
-                        //   "Name : ${user.displayName!}",
-                        //   style: TextStyle(
-                        //     fontSize: 23,
-                        //   ),
-                        // ),
-                        // Text(
-                        //   "Email : ${user.email!}",
-                        //
-                        //   style: TextStyle(
-                        //      // fontSize: 15,fontWeight: FontWeight.w600
-                        //   ),
-                        // )
+                        Text(
+                          "Name : ${user.displayName!}",
+                          style: TextStyle(
+                            fontSize: 23,
+                          ),
+                        ),
+                        Text(
+                          "Email : ${user.email!}",
+
+                          style: TextStyle(
+                             // fontSize: 15,fontWeight: FontWeight.w600
+                          ),
+                        )
                       ],
                     ),
                   ),
