@@ -29,7 +29,8 @@ void main() async{
         ChangeNotifierProvider(
             create: (context) => Themeprovider()),
         Provider<Firebaseauth_method>(create: (_)=>Firebaseauth_method( FirebaseAuth.instance)),
-        StreamProvider(create: (context)=> context.read<Firebaseauth_method>().authState, initialData: null)
+        StreamProvider(create: (context)=> context.read<Firebaseauth_method>().authState, initialData: null),
+
 
 
       ],
@@ -46,7 +47,7 @@ class myapp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: Provider.of<Themeprovider>(context).themedata,
-      home:splash(),
+      home:splash()
     );
   }
 }
@@ -55,11 +56,11 @@ class AuthWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Firebaseuser = context.watch<User?>();
+    final Firebaseuser= context.watch<User?>();
 
     if (Firebaseuser != null){
-      return  fitnesnavigation();
+      return fitnesnavigation();
     }
-    return  loginpage();
+    return loginpage();
   }
 }

@@ -75,7 +75,24 @@ class leg extends StatelessWidget{
                     );
                   });
 
-                })
+                }),
+            legdetails(title: "BURPEES", subtitle: "X10", image: Image(image: AssetImage("assets/Gif/Burpees.gif"),width: 50,), ontap: (){
+              showModalBottomSheet(context: (context), builder: (BuildContext context){
+                return Container(
+                  child: Column(
+                    children: [
+                      Image(image: AssetImage("assets/Gif/Burpees.gif"),height: 200,width: 500,),
+                      SizedBox(height: 5,),
+                      Text("BURPEES",style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
+                      Text("""   Stand with your feet shoulder with apart,then put your
+        hands on the ground and kick your feet 
+        backward.Do a quick push up and then jump up""")
+                    ],
+                  ),
+                );
+
+              });
+            })
           ],
         ),
       ),
