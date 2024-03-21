@@ -61,7 +61,7 @@ class _loginpageState extends State<loginpage> {
                           padding: EdgeInsets.only(top: 150,left: 55),
                           child: Text(
                             "Login your account",
-                            style: TextStyle( fontSize: 30,fontWeight: FontWeight.w800),
+                            style: TextStyle( fontSize: 30,fontWeight: FontWeight.w800,color: Colors.white),
                           )),
                       Padding(
                         padding: EdgeInsets.only(left: 60, right: 60, top: 60),

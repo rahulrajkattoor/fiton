@@ -3,6 +3,7 @@
 import 'dart:async';
 
 
+import 'package:fiton/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +25,7 @@ class _splashState extends State<splash> {
  void initState(){
   super.initState();
  Timer(Duration(seconds: 5), () {
- Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage()));
+ Navigator.push(context, MaterialPageRoute(builder: (context)=>AuthWrapper()));
    });
 
 

@@ -82,7 +82,7 @@ void signUpUser() async {
                               child: Text(
                                 "Register your account", style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 20,
+                                  fontSize: 30,
                                   fontWeight: FontWeight.w800),),
                             ),
                             Padding(padding: EdgeInsets.only(
@@ -145,7 +145,7 @@ void signUpUser() async {
 
                                   decoration: InputDecoration(
 
-                                      suffixIcon: Icon(Icons.password),
+                                      suffixIcon: Icon(Icons.password,color: Colors.white,),
 
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(

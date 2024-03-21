@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fiton/Fitnes%20app/Login%20page.dart';
 import 'package:fiton/Fitnes%20app/fitnes%20home%20page.dart';
-import 'package:fiton/Fitnes%20app/fitnes%20home.dart';
 import 'package:fiton/Fitnes%20app/service/firebase%20helper.dart';
 
 import 'package:flutter/material.dart';

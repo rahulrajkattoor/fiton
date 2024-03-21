@@ -92,7 +92,25 @@ class leg extends StatelessWidget{
                 );
 
               });
-            })
+            }),
+            legdetails(title: "CALF RASISES WITH FOOT", subtitle: "X12", image:Image(image: AssetImage("assets/Gif/wall calf raises.gif"),width: 50,),
+                ontap: (){
+              showModalBottomSheet(context: (context), builder: (BuildContext context){
+                return Container(
+                  child: Column(
+                    children: [
+                      Image(image: AssetImage("assets/Gif/wall calf raises.gif"),height: 200,width: 500,),
+                      SizedBox(height: 5,),
+                      Text("CALF RASISES WITH  FOOT",style: TextStyle(fontStyle: FontStyle.italic,fontSize: 20),),
+                      Text("""Stand with your feet shoulder width apart
+   put your hands on the wall to mountain balance\n
+   Twist yoyr ankles to make your toes point
+   outwards,then lift your heels up and down""")
+                    ],
+                  ),
+                );
+              });
+                })
           ],
         ),
       ),
