@@ -4,6 +4,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fiton/Fitnes%20app/forgot%20password.dart';
 import 'package:fiton/Fitnes%20app/registration.dart';
 import 'package:fiton/Fitnes%20app/service/firebase%20helper.dart';
 import 'package:flutter/cupertino.dart';
@@ -118,8 +119,12 @@ class _loginpageState extends State<loginpage> {
                           textColor: Colors.white,
                           onPressed: Loginuser,
                         shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20)),
-                        child: Text("Login"),)
+                        child: Text("Login"),),
                       ),
+                      TextButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>forgotpass()));
+                      }, child:Text("Forget password",style: TextStyle(color: Colors.white),)),
+
 
 
 
