@@ -76,7 +76,7 @@ class _CalenderState extends State<Calender> {
                   MaterialPageRoute(builder: (context) => fitnesnavigation()));
             },
             child: Icon(
-              Icons.arrow_back_ios,
+              Icons.arrow_back,
 
             )),
         actions: [
