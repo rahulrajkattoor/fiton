@@ -175,8 +175,22 @@ class _SettingsState extends State<Settings> {
             // ),
             ListTile(
               onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage()));
+                // FirebaseAuth.instance.signOut();
+                // Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage()));
+                showDialog(context: context, builder: (context)=>AlertDialog(
+                  actions: [
+                    ElevatedButton(onPressed: (){
+                      FirebaseAuth.instance.signOut();
+                       Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage()));
+
+                    }, child:Text("Yes",style: TextStyle(color: Colors.black),) ),
+                    ElevatedButton(onPressed: (){
+                      Navigator.of(context).pop();
+                    }, child:Text("No",style: TextStyle(color: Colors.black),))
+                  ],
+                  title: Text("Logout"),
+
+                ));
               },
               title: Text(
                 'Logout',
@@ -190,7 +204,19 @@ class _SettingsState extends State<Settings> {
             ListTile(
               onTap: () {
 
-                context.read<Firebaseauth_method>().deleteAccount(context);
+                 context.read<Firebaseauth_method>().deleteAccount(context);
+                // showDialog(context: context, builder: (context)=>AlertDialog(
+                //   actions: [
+                //     ElevatedButton(onPressed: (){
+                //        context.read<Firebaseauth_method>().deleteAccount(context);
+                //
+                //     }, child:Text("Yes",style: TextStyle(color: Colors.black),)),
+                //     ElevatedButton(onPressed: (){
+                //       Navigator.of(context).pop();
+                //     }, child:Text("No",style: TextStyle(color: Colors.black),))
+                //   ],
+                //   title: Text("Delete"),
+                // ));
 
               },
               title: Text(
