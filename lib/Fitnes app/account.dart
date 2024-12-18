@@ -183,10 +183,10 @@ class _SettingsState extends State<Settings> {
                       FirebaseAuth.instance.signOut();
                        Navigator.push(context, MaterialPageRoute(builder: (context)=>loginpage()));
 
-                    }, child:Text("Yes",style: TextStyle(color: Colors.black),) ),
+                    }, child:Text("Yes") ),
                     ElevatedButton(onPressed: (){
                       Navigator.of(context).pop();
-                    }, child:Text("No",style: TextStyle(color: Colors.black),))
+                    }, child:Text("No"))
                   ],
                   title: Text("Logout"),
 
